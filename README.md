@@ -4,6 +4,6 @@
 ### Criado para fins puramente acadêmicos, sendo proposto como avaliação final da discplina de Programação I
 
 >Para usar o sistema é necessário possuir um compilador gcc em seu computador para compilar e executar o programa
->È considerado relativamente importante ter um editor de código em seu computador como o [CLION](https://www.jetbrains.com/clion/download/) ou [FALCON C++](https://sourceforge.net/projects/falconcpp/).
+> É importante ter um editor de código em seu computador como o [CLION](https://www.jetbrains.com/clion/download/) ou [FALCON C++](https://sourceforge.net/projects/falconcpp/).
 
 
