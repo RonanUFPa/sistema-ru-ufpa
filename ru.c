@@ -1,53 +1,65 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <locale.h> //pra usar o setLocale
 
-struct aluno
+typedef struct // usando typedef pra nao precisar informar que é um struct antes do "Aluno"
 {
-    char nome[5000];
+    char nome[50];
     int matricula;
     float creditos;
-};
+} Aluno;
 
-int inserir_usuario(char m, int c){
+int inserir_usuario(char nome){
 
-    struct aluno a;
+    aluno a;
+    i = 0;
     printf("Olá, meu querido guerreiro, por favor infome seu nome: ");
     scanf("%[^\n]", a.nome); //leitura de nomes compostos com [^\n]
+
     if(a.nome <'0'|| a.nome >'9') //condição parar checar se é um digito ou uma letra
 	{
-        return printf("Apenas letras, por favor");
-	}
-    for(i = 0; i<=5000;i++) // contado todos os 5000
-	{
-        for(int i = 0;a.nome[i] == a.nome[i]; ++i) //verifica se os nomes são iguais
-    	{                 
-        	if(a.nome[i] == 0) //verifica se existe algo em nome
-			{
-        		printf("Nenhum usuario cadastrado até o momento");
-			} 
-            printf("Usuário já cadastrado. Seu id é %d" % consulta_id(x)); 
-    	} 
-	}
+        printf("Mano eu quero teu nome, não teu whatsapp, digita apenas letras, drx");
+	};
 
-	printf("Cadastro feito com sucesso!");
-
+    for(int i = 0;a.nome[i] == a.nome[i]; ++i) //verifica se os nomes são iguais
+    {                 
+        if(a.nome[i] == 0) //verifica se existe algo em nome, 0 é o nulo do vetor de caracteres
+		{
+        	printf("Nenhum mano cadastrado até o momento, chama os parça ai :)");
+		};
+        printf("Essa mano ai já ta cadastrado. A matricula desse corno é %d" % consulta_id(x)); 
+    };
+	printf("Cadastro feito com sucesso, bem vindo ao clube dos cornos, digo *R.U!");
 	return a.nome;
 }
 
-float creditos();
+float creditos( float creditos){
+    return creditos;
+};
 
-int entrar_no_ru();
+bool entrar_no_ru( bool v, bool f){
+    return entrar_no_ru;
+};
+
+float lotacao( int lotacao){
+    return lotacao;
+}
 
 int main(void)
 {
     setlocale(LC_ALL, "Portuguese");
-    struct aluno a;
+    aluno a;
     char opcao;
+    int horas;
+    int minutos;
+    int lotacao;
     //para repetir o programa.
     while(opcao!='s')  
     {
     printf("\nBEM VINDO AO RU!");
-    printf("Lotação atual: %d pessoa(s) às %d:%d" % (len(lotacao), horas, minutos));
-    atual = mostrar_lotacao();  
+    printf("Lotação atual: %d pessoa(s) às %d:%d" % (sizeof(lotacao), horas, minutos));
+    atual = lotacao();  
     //Menu de opcoes
     printf("   |==================================|\n");
     printf("                MENU RU               \n");
@@ -72,9 +84,9 @@ int main(void)
             printf(" *----------------------------------------------------------------------------*\n");
             printf(" | ");printf("\t\t\t          NOVO USUARIO     ");printf("\t\t\t      |\n");
             printf(" *----------------------------------------------------------------------------*\n");
-            getUsuarios = inserir_usuarios();
-        getch();
-        system("cls");
+            inserir_usuarios(a.nome);
+        getch(); //impede que o cmd sai antes de ler o digito
+        system("cls"); // limpa a tela
         break;
 
         case '2':      
@@ -83,7 +95,7 @@ int main(void)
             printf(" *----------------------------------------------------------------------------*\n");
             printf(" | ");printf("\t\t\t           CRÉDITOS        ");printf("\t\t\t      |\n");
             printf(" *----------------------------------------------------------------------------*\n");
-            getCreditos = creditos();
+            creditos(a.creditos);
         getch();
         system("cls");
         break;
@@ -94,17 +106,19 @@ int main(void)
             printf(" *----------------------------------------------------------------------------*\n");
             printf(" | ");printf("\t\t\t        ENTRAR NO RU       ");printf("\t\t\t      |\n");
             printf(" *----------------------------------------------------------------------------*\n");
-            entrarRU= entrar_no_ru(a.nome);
-        getch();
+            entrar_no_ru(a.nome);
+        getch(); 
         system("cls");
         break;
 
         case '4':      
         //para sair do programa.
+        printf("Até mais!");
         opcao= 0;
         break;
         default:    
             //opção inexistente.
+            printf("Digita direito, seu corno!");
             system("cls");        
         break;
     }
