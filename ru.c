@@ -1,90 +1,91 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <conio.h>
+#include <conio.h> //pra usar o getch()
 #include <locale.h> //pra usar o setLocale
-int aluno_size = 0;
+int aluno_size = 0; // tamanho do struct, auxilia
 
 typedef struct // usando typedef pra nao precisar informar que é um struct antes do "Aluno"
 {
     char nome[50];
     int id;
     float creditos;
-    int Lista[];
 } Aluno;
 
-int checar(Aluno.Lista[], Aluno.nome[35]){
-    int i;
-    for(i=0;i<aluno_size;i++){
-        if(!strncmp(lista[i].nome,Aluno.nome,35)) //Essa função irá fazer a comparação, caractere a caractere, 
-        //dos dois parâmetros informados, como a função strcmp, exceto por comparar até quantidade caracteres.
-        return 1;
+//função criada para verificar se o nome do aluno não é igual ao digitado por inserir_usuario
+int checar(Aluno teste[],char nome[50]){
+	int i;
+    for(i=0;i<reg_size;i++){ //percorrendo o tamanho do struct (nome)
+      if(!strncmp(teste[i].nome,nome,35))
+	  { 
+	  	  return 1; // caso o nome digitado seja igual um nome contido no vetor de nomes
+	  }
     }
-    return 0;
+    return 0; // aceitar a inserção do nome
 }
-
-void inserir_usuario(Aluno.lista[10]){
+//função para inserir o aluno: seu id, nome e creditos
+void inserir_usuario(Aluno teste[10]){  
     int i;
-    for(i = 0; i < 10; ++i){
-        Aluno.nome[50];
+    for(i = 0; i < 10; ++i){ //percorrendo o vetor de 10 posições, que pode ser definido pelo usuario depois
+        Aluno.nome[50]; //vetor de caracteres de nomes com 50 posições
         printf("Olá, meu querido guerreiro, por favor infome seu nome: ");
-        scanf("%s", &Aluno.nome);
+        scanf("%s", &Aluno.nome); // pega o nome
 
-        if(!checar(lista,nome)){
-            aluno_size ++;
-
-            lista[aluno_size-1].id = aluno_size;
-            strcpy(lista[aluno_size-1].nome,Aluno.nome);
-            lista[aluno_size-1].cred = 0.0;
+        if(!checar(teste,nome)){ //verificar se o nome digitado já não consta no vetor
+            aluno_size ++; // aumenta um usuario no vetor
+            teste[aluno_size-1].id = aluno_size; = //incrementa um id
+            strcpy(teste[aluno_size-1].nome,Aluno.nome); //Adiciona o nome
+            teste[aluno_size-1].cred = 0.0; //adiciona o credito default para os usuarios
 
             printf("Cadastro feito com sucesso, bem vindo ao clube dos cornos, digo *R.U!");
-            printf("\nCorno %s criado com id %d\n\n",lista[aluno_size-1].nome,aluno_size);
+            printf("\nCorno %s criado com id %d\n\n",teste[aluno_size-1].nome,aluno_size); 
         }
         else{
             printf("\nFala outro nome ai mano, esse tá sendo usado por outro corno\n");  
         }
     }
 }
-void printAluno(Aluno lista[10]){
+//função para mostrar todos os usuarios cadastrados
+void printAluno(aluno_size){ // função para mostrar todos os alunos cornos
     int i;
-    for(i = 0; i < 10; ++i)
+    for(i = 0; i < aluno_size; ++i)
     {
-        printf("%d %s %.2lf \n", lista[i].id, lista[i].nome, lista[i].creditos);
+        printf("%d %s %.2lf \n", teste[i].id, teste[i].nome, teste[i].creditos);
     }
 }
-
-int creditos (Aluno lista[10]){
-    int i,busca,selecionado;
+//função para inserir creditos, primeiro ele busca pelo id do usuario ai depois pergunta se quer inserir nele
+int creditos (Aluno teste[10]){
+    int i,busca;
+	char selecionado;
     double adiciona;
     printf("Digite o ID que deseja buscar: \n");
-    scanf("%d", &busca);
-    for(i = 0; i < aluno_size ;i++){
-
-        if(busca == i+1 ){
-            printf("O Corno %s no ID %d , possui %.2lf Creditos\n" ,lista[i].nome,busca,lista[i].creditos);
-            printf("Deseja comprar Creditos?, Selecione 1 para comprar\n");
-            scanf("%d", &selecionado);
-
-        if(selecionado == 1){
-            while(selecionado == 1){
-                printf("Valor da compra: \n");
-                scanf("%lf", &adiciona);
-                lista[i].creditos+=adiciona;
-                printf("Novo Saldo de %s, ID: %d, é de: %.2lf\n",lista[i].nome,lista[i].id,lista[i].creditos);
+    scanf("%d", &busca); //pegando o id 
+    for(i = 0; i < aluno_size ;i++){ //percorrendo o tamanho do struct
+        if(busca == i+1 ){ // se ele achar o id
+            printf("O Corno %s no ID %d , possui %.2lf Creditos\n" ,teste[i].nome,busca,teste[i].creditos);
+            printf("Coloca 'S' ae se quiser mais creditos, mano\n");
+            scanf("%s", &selecionado);
+        if(selecionado == 'S'){ // aqui funciona a inserção de creditos
+            do{ //executa e depois verifica a expressão
+                printf("Egua mano, quanto tu ta afim de dar?\n"); 
+                scanf("%lf", &adiciona); // lendo credito a ser adicionado
+                teste[i].creditos+=adiciona; //adicionando creditos ao vetor
+                printf("Mano, teu novo saldo é de %s, ID: %d, é de: %.2lf\n",teste[i].nome,teste[i].id,teste[i].creditos);
                 break;
-            }
+            }while(selecionado == '0')
         }
         else
         {
-            printf("Informe um numéro valido (Apenas 1 é aceito).\n");
+            printf("Digita direito ai corno.\n");
             break;
         }
-    printf("Digita qualquer coisa que seja diferente de 1 pra tu sair daqui\n");
+    	printf("Digita qualquer coisa que seja diferente de 1 pra tu sair daqui\n");
     }
 }
 }
 
-int entrar_no_ru( Aluno lista[10]){
-    if(len(lotacao)<300){ 
+//função para entrar no ru, checa se o id ja esta lá
+int entrar_no_ru( Aluno teste[10]){
+    if(sizeof(lotacao)<300){ 
         r = input("Para entrar no RU, é preciso um cadastro. Você já é cadastrado? S/N ")
         if (r == 's' || r == 'S'){
             scanf("%d", &i)
@@ -92,11 +93,11 @@ int entrar_no_ru( Aluno lista[10]){
                 print("Oops.. parece que você já está dentro do RU!")
             }
             else{
-                if (lista[i] == lista[i].id & lista[i].id!=[]){
+                if (teste[i] == teste[i].id & teste[i].id!=[]){
                     
                     for(aluno_size i = 0; i < 10 < count; i++)
                     {                  
-                        lotacao = lista[i].id;
+                        lotacao = teste[i].id;
                         horas_em_m+=10;
                         printf("Um Corno entrou no R.U.\n");
                         lsita[i]-=1;
@@ -104,8 +105,8 @@ int entrar_no_ru( Aluno lista[10]){
                 }
             }
             if(r == "n" or r == "N"){
-                inserir_usuario(lista, i);
-                lista[i]-= 1;
+                inserir_usuario(teste[i]);
+                teste[i]-= 1;
                 i+=1;
                 printf("Cadastro feito com sucesso. Corno liberado pra entrar.\n");
                 lotacao.append(i);
@@ -120,7 +121,8 @@ int entrar_no_ru( Aluno lista[10]){
 }
 };
 
-void lotacao(){
+//função para mostrar a lotação
+int lotacao(){ 
     system("cls");
     printf("Lotação média:\n11:00 - 11:30: 050 pessoas\n11:30 - 12:00: 100 pessoas\n");
     printf("12:00 - 12:30: 150 pessoas\n 12:30 - 13:00: 200 pessoas\n 13:00 - 13:30: 200 pessoas\n 13:30 - 14:00: 150 pessoas");
@@ -130,13 +132,14 @@ void lotacao(){
     horas_em_m = 600;
     horas = int(horas_em_m/60);
     minutos = horas_em_m % 60;
+    return lotacao(sizeof((teste[i].id)); // retorna o tamanho do conteudo dentro de lotação, cada id é uma pessoa
 }
 
-void main(void)
+int main(void)
 {
     setlocale(LC_ALL, "Portuguese");
     char opcao;
-    Aluno lista[10];
+    Aluno teste[10];
     //para repetir o programa.
     while(opcao!='s')  
     {
@@ -166,10 +169,10 @@ void main(void)
             printf(" *----------------------------------------------------------------------------*\n");
             printf(" | ");printf("\t\t\t          NOVO USUARIO     ");printf("\t\t\t      |\n");
             printf(" *----------------------------------------------------------------------------*\n");
-            inserir_usuario(Aluno lista[10]);
+            inserir_usuario(Aluno teste[10]);
             getch(); //impede que o cmd sai antes de ler o digito
             system("cls"); // limpa a tela
-            printAluno(Aluno lista[10]);
+            printAluno(Aluno teste[10]);
             break;
 
         case '2':      
@@ -179,7 +182,7 @@ void main(void)
             printf(" *----------------------------------------------------------------------------*\n");
             printf(" | ");printf("\t\t\t           CRÉDITOS        ");printf("\t\t\t      |\n");
             printf(" *----------------------------------------------------------------------------*\n");
-            int creditos(Aluno lista[10]);
+            int creditos(Aluno teste[10]);
             getch();
             system("cls");
             break;
@@ -191,7 +194,7 @@ void main(void)
             printf(" *----------------------------------------------------------------------------*\n");
             printf(" | ");printf("\t\t\t        ENTRAR NO RU       ");printf("\t\t\t      |\n");
             printf(" *----------------------------------------------------------------------------*\n");
-            entrar_no_ru(Aluno Lista[i]);
+            entrar_no_ru(Aluno teste[i]);
             getch(); 
             system("cls");
             break;
