@@ -2,42 +2,42 @@
 #include <stdlib.h>
 #include <conio.h>
 #include <locale.h> //pra usar o setLocale
-int size_t = 0;
+int aluno_size = 0;
 
 typedef struct // usando typedef pra nao precisar informar que é um struct antes do "Aluno"
 {
     char nome[50];
     int id;
     float creditos;
+    int Lista[];
 } Aluno;
 
-int checar(Aluno lista[], a.nome[35]){
+int checar(Aluno.Lista[], Aluno.nome[35]){
     int i;
-    for(i=0;i<size_t;i++){
-        if(!strncmp(lista[i].nome,a.nome,35)) //Essa função irá fazer a comparação, caractere a caractere, 
+    for(i=0;i<aluno_size;i++){
+        if(!strncmp(lista[i].nome,Aluno.nome,35)) //Essa função irá fazer a comparação, caractere a caractere, 
         //dos dois parâmetros informados, como a função strcmp, exceto por comparar até quantidade caracteres.
         return 1;
     }
     return 0;
 }
 
-void inserir_usuario(Aluno lista[10]){
+void inserir_usuario(Aluno.lista[10]){
     int i;
-    Aluno a;
     for(i = 0; i < 10; ++i){
-        a.nome[50];
+        Aluno.nome[50];
         printf("Olá, meu querido guerreiro, por favor infome seu nome: ");
-        scanf("%s", &a.nome);
+        scanf("%s", &Aluno.nome);
 
         if(!checar(lista,nome)){
-            size_t ++;
+            aluno_size ++;
 
-            lista[size_t-1].id = size_t;
-            strcpy(lista[size_t-1].nome,a.nome);
-            lista[size_t-1].cred = 0.0;
+            lista[aluno_size-1].id = aluno_size;
+            strcpy(lista[aluno_size-1].nome,Aluno.nome);
+            lista[aluno_size-1].cred = 0.0;
 
             printf("Cadastro feito com sucesso, bem vindo ao clube dos cornos, digo *R.U!");
-            printf("\nCorno %s criado com id %d\n\n",lista[size_t-1].nome,size_t);
+            printf("\nCorno %s criado com id %d\n\n",lista[aluno_size-1].nome,aluno_size);
         }
         else{
             printf("\nFala outro nome ai mano, esse tá sendo usado por outro corno\n");  
@@ -52,38 +52,12 @@ void printAluno(Aluno lista[10]){
     }
 }
 
-/*    Aluno a;
-    
-    if(a.nome[i] <'0'|| a.nome[i] >'9') //condição parar checar se é um digito ou uma letra
-	{
-        printf("Mano eu quero teu nome, não teu whatsapp, digita apenas letras, drx");
-	}
-    else{
-        for(size_t i = 0; i < a.nome[50]; i++)
-        {
-            printf("Olá, meu querido guerreiro, por favor infome seu nome: ");
-            scanf("%[^\n]", a.nome[i]); //leitura de nomes compostos com [^\n]
-        }
-    };
-
-    for(;a.nome[i] == a.nome[i]; ++i) //verifica se os nomes são iguais
-    {                 
-        if(a.nome[i] == 0) //verifica se existe algo em nome, 0 é o nulo do vetor de caracteres
-		{
-        	printf("Nenhum mano cadastrado até o momento, chama os parça ai :");
-		};
-        printf("Essa mano ai já ta cadastrado. o ID desse corno é: "); 
-    };
-	printf("Cadastro feito com sucesso, bem vindo ao clube dos cornos, digo *R.U!");
-	return a.nome;
-}
-*/
 int creditos (Aluno lista[10]){
     int i,busca,selecionado;
     double adiciona;
     printf("Digite o ID que deseja buscar: \n");
     scanf("%d", &busca);
-    for(i = 0; i < size_t ;i++){
+    for(i = 0; i < aluno_size ;i++){
 
         if(busca == i+1 ){
             printf("O Corno %s no ID %d , possui %.2lf Creditos\n" ,lista[i].nome,busca,lista[i].creditos);
@@ -120,18 +94,12 @@ int entrar_no_ru( Aluno lista[10]){
             else{
                 if (lista[i] == lista[i].id & lista[i].id!=[]){
                     
-                    for(size_t i = 0; i < 10 < count; i++)
+                    for(aluno_size i = 0; i < 10 < count; i++)
                     {                  
                         lotacao = lista[i].id;
                         horas_em_m+=10;
                         printf("Um Corno entrou no R.U.\n");
                         lsita[i]-=1;
-                    /*                     
-                    lotacao.append(i);
-                    horas_em_m+=10;
-                    printf("Corno, entrando.\n");
-                    lsita[i]-=1; 
-                    */
                     }
                 }
             }
@@ -164,17 +132,11 @@ void lotacao(){
     minutos = horas_em_m % 60;
 }
 
-int main(void)
+void main(void)
 {
     setlocale(LC_ALL, "Portuguese");
-    Aluno a;
     char opcao;
-    int horas;
-    int minutos;
-    Aluno teste[10];
-    registro(teste);
-    printreg(teste);
-    consultacompra(teste);
+    Aluno lista[10];
     //para repetir o programa.
     while(opcao!='s')  
     {
@@ -229,7 +191,7 @@ int main(void)
             printf(" *----------------------------------------------------------------------------*\n");
             printf(" | ");printf("\t\t\t        ENTRAR NO RU       ");printf("\t\t\t      |\n");
             printf(" *----------------------------------------------------------------------------*\n");
-            entrar_no_ru(a.nome);
+            entrar_no_ru(Aluno Lista[i]);
             getch(); 
             system("cls");
             break;
@@ -247,3 +209,4 @@ int main(void)
     }
 } 
 } 
+
